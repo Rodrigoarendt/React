@@ -7,7 +7,7 @@ import { loadPosts } from "./utils/load-posts";
 import { Button } from "../../Button";
 import { TextInput } from '../../components/textInput';
 
-class Home extends Component {
+class Home extends React.Component {
   state = {
     posts: [],
     allPosts: [],
