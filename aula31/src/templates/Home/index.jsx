@@ -1,5 +1,5 @@
 import { Component } from "react";
-
+import React from 'react';
 import "./style.css";
 
 import { Posts } from "../../components/PostCard/Posts";
@@ -7,7 +7,7 @@ import { loadPosts } from "./utils/load-posts";
 import { Button } from "../../Button";
 import { TextInput } from '../../components/textInput';
 
-class Home extends Component {
+class Home extends React.Component {
   state = {
     posts: [],
     allPosts: [],
