@@ -25,7 +25,7 @@ import { TextInput } from '../../components/textInput';
   }, []);
 
   useEffect(() => {
-    console.log(new Date().toLocaleString('pt-BR'));
+    //console.log(new Date().toLocaleString('pt-BR'));
     handleLoadPosts(0, postsPerPage);
   }, [handleLoadPosts, postsPerPage]);
 
