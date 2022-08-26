@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TouchableUpacity, StyleSheet, Text, TextInput, View } from 'react-native';
-import cesta from '../Cesta/cesta';
+import cesta from './cesta';
 
 export default function App() {
     const [frutas, setFrutas] = useState(["Maça", "Banana", "Morango"])
