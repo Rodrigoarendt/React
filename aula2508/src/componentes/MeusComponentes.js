@@ -16,8 +16,7 @@ export default function MeuComponente(props) {
     } else {
       setResultado(`${nome} ${sobreNome} voce é de Menor ):`)
     }
-  }
-  
+  } 
 
   return (
     <View style={styles.container}>
