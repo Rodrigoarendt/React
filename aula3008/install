@@ -1,0 +1,9 @@
+npm install @react-navigation/native
+
+npm install @react-navigation/drawer
+
+npx expo install react-native-screens react-native-safe-area-context
+
+npm install react-native-gesture-handler react-native-reanimated
+
+npx expo install react-native@0.69.5 react-native-gesture-handler@~2.5.0 react-native-reanimated@~2.9.1
