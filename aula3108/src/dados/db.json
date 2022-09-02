@@ -1,3 +1,40 @@
 {
-    "contatos":[]
+  "contatos": [
+    {
+      "nome": "rodrigo arendt",
+      "fone": "56516516516",
+      "email": "rodrigo.arendt@hotmail.com",
+      "id": 1
+    },
+    {
+      "nome": "debora",
+      "fone": "454651",
+      "email": "debora.com",
+      "id": 2
+    },
+    {
+      "nome": "rodrigo",
+      "fone": "241212",
+      "email": "rodrigo.arendt@hotmail.com",
+      "id": 3
+    },
+    {
+      "nome": "rodrigo",
+      "fone": "1551",
+      "email": "asdsd",
+      "id": 4
+    },
+    {
+      "nome": "dfdfsd",
+      "fone": "sdfsdfsd",
+      "email": "sdfsdf",
+      "id": 5
+    },
+    {
+      "nome": "sdfsdf",
+      "fone": "sdfsdf",
+      "email": "sdfsdf",
+      "id": 6
+    }
+  ]
 }

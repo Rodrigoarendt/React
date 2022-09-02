@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ViewBase } from "react-native";
 
 
 export default function Cadastro() {
@@ -16,11 +16,39 @@ export default function Cadastro() {
                 email: email,
                 fone: fone
             }
-            console.warn(contato)
             setMsg('')
+            save(contato)
         }
 
     }
+
+
+    function save() {
+        fetch('http://localhost:3000/contatos',
+            {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json', 'content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nome: nome,
+                    fone: fone,
+                    email: email
+                })
+            }
+        )
+            .then(() => { setMsg("Registro inserido com sucesso") })
+            .then(() => limpar())
+            .catch(() => { setMsg("Registro não foi inserido") })
+    }
+
+
+    function limpar() {
+        setNome("")
+        setFone("")
+        setEmail("")
+    }
+
 
     function dadosValidos() {
         if (nome == '') {
@@ -39,8 +67,10 @@ export default function Cadastro() {
     }
 
 
-        return (
-            <View style={styles.container}>
+    return (
+        <View style={styles.container}>
+
+            <View style={styles.Box}>
                 <Text style={styles.title}>Tela de cadastro</Text>
                 <TextInput
                     style={styles.input}
@@ -48,7 +78,7 @@ export default function Cadastro() {
                     value={nome}
                     onChangeText={setNome}
                 />
-                {(msg.search('nome') > -1) ? <Text styles={styles.msg}>{msg}</Text> : ''}
+                {(msg.search('nome') > -1) ? <Text styles={styles.msg}>{msg}</Text> :null}
                 <TextInput
                     style={styles.input}
                     placeholder="Informe Email"
@@ -56,7 +86,7 @@ export default function Cadastro() {
                     onChangeText={setEmail}
 
                 />
-                {(msg.search('email') > -1) ? <Text styles={styles.msg}>{msg}</Text> : ''}
+                {(msg.search('email') > -1) ? <Text styles={styles.msg}>{msg}</Text> :null}
                 <TextInput
                     style={styles.input}
                     placeholder="Informe Fone"
@@ -64,7 +94,7 @@ export default function Cadastro() {
                     onChangeText={setFone}
 
                 />
-                {(msg.search('fone') > -1) ? <Text styles={styles.msg}>{msg}</Text> : ''}
+                {(msg.search('fone') > -1) ? <Text styles={styles.msg}>{msg}</Text> :null}
 
                 <TouchableOpacity
                     styles={styles.button}
@@ -72,39 +102,62 @@ export default function Cadastro() {
                 >
                     <Text style={styles.txt}>Gravar</Text>
                 </TouchableOpacity>
+                {(msg.search('Registro')> -1)?<Text styles={styles.msg}>{msg}</Text> :null}
             </View>
-        )
+
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: {
+        width: '100%',
+        marginVertical: 10,
+        padding: 10,
+        backgroundColor: '#643BA6',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%'
+
+
+    },
+    button: {
+        backgroundColor: '#516AC4',
+        marginVertical: 20,
+        width: '100%',
+        borderWidth: 1,
+    },
+    input: {
+        height: 30,
+        borderWidth: 1,
+        padding: 20,
+        backgroundColor: '#CDDCD2',
+        marginVertical: 20,
+        width: 300,
+        textAlign: 'center',
+        outlineWidth: 0,
+        borderRadius: 10
+
+    },
+    title: {
+        color: 'red',
+        fontSize: 30,
+        textAlign: 'center'
+    },
+    txt: {
+        textAlign: 'center',
+        backgroundColor: '#516AC4',
+        width: 300,
+        borderWidth: 1,
+        outlineWidth: 0,
+        borderRadius: 10
+
+    },
+    Box: {
+        width: '50%',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 
-    const styles = StyleSheet.create({
-        container: {
-            marginVertical: 10,
-            padding: 10,
-            backgroundColor: 'dark'
-        },
-        button: {
-            alignItems: "center",
-            backgroundColor: '#20B753',
-            padding: 10,
-            marginVertical: 20,
-            width: '100%',
-            margin: 'auto'
-        },
-        input: {
-            height: 40,
-            borderWidth: 1,
-            padding: 10,
-            backgroundColor: '#CDDCD2',
-            marginVertical: 10
-        },
-        title: {
-            color: 'red',
-            fontSize: 20,
-            textAlign: 'center'
-        },
-        txt: {
-            textAlign: 'center',
-            backgroundColor: '#20B753',
-        }
-        
-    })
+
+})
