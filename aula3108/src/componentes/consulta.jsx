@@ -6,10 +6,10 @@ import Cardcontato from "./Cardocontato";
 export default function Consulta() {
     const [contatos, setContatos] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3000/contatos')
+        fetch('http://localhost:3000/contatos/')
             .then(data => data.json())
             .then(result => setContatos(result))
-    }, [])
+    }, [contatos])
 
     return (
         <View>
@@ -18,6 +18,7 @@ export default function Consulta() {
                 <FlatList
                     data={contatos}
                     renderItem={({ item }) => <Cardcontato
+                        id={item.id}
                         nome={item.nome}
                         fone={item.fone}
                         email={item.email} />}
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%'
+
     },
 
     cards: {
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: '#CDDCD2',
         marginVertical: 20,
-        width: 500,
+        width: 300,
         textAlign: 'center',
         outlineWidth: 0,
         borderRadius: 10
